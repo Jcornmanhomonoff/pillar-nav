@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import Layout from '../components/layout';
 
-const IndexPage = () => {
+const AboutPage = () => {
     return (
-        <Layout pageTitle="Home Page">
-            <p>This is my home page</p>
+        <Layout pageTitle='About'>
+            <p>This is my about page</p>
         </Layout>
     )
 };
 
-export default IndexPage;
+export default AboutPage;
