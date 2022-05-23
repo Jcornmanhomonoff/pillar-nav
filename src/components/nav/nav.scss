@@ -1,0 +1,39 @@
+@import '../../assets/styles/color_variables';
+@import '../../assets/styles/mixins';
+
+$tab: 768px;
+
+nav {
+    background: $black;
+    color: $buttonBlue;
+    padding: 10px 15px;
+    width: 100vw;
+
+    @include media-min-width($tab) {
+        padding: 15px 50px;
+    }
+
+    ul {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        margin: 0;
+        max-width: 400px;
+        width: 100%;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:visited {
+            color: inherit;
+        }
+
+        &:hover, &:focus, &.active {
+            color: $navHoverBlue;
+        }
+    }
+}

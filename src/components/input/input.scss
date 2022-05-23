@@ -1,0 +1,35 @@
+@import '../../assets/styles/color_variables';
+@import '../../assets/styles/mixins';
+
+$tab: 768px;
+
+label {
+    @include media-min-width($tab) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.field {
+    margin: 15px 0 30px;
+
+    &--name {
+        flex-basis: 70px;
+        font-weight: bold;
+    }
+}
+
+input {
+    border: 1px solid $borderGray;
+    border-radius: 5px;
+    display: block;
+    height: 47px;
+    line-height: 2.8125rem;
+    margin-top: 5px;
+    padding: 0 10px;
+    width: 100%;
+
+    @include media-min-width($tab) {
+        margin-top: 0;
+    }
+}
