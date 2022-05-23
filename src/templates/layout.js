@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import './layout.scss';
-import Nav from '../nav/nav.js';
+import '../assets/styles/layout.scss';
+import Nav from '../components/nav/nav.js';
 
 const Layout = props => {
     const {

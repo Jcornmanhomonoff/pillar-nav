@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Layout from '../components/layout/layout';
+import Layout from '../templates/layout';
 import Form from '../components/form/form';
+import { useRecoilState, RecoilRoot } from 'recoil';
 
 const AnalysisPage = () => {
     return (

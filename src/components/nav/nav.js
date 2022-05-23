@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { toUpperCase } from '../../assets/scripts/helpers';
 import './nav.scss';
+import { useRecoilState, RecoilRoot } from 'recoil';
 
 const Nav = props => {
     const {
@@ -9,6 +10,7 @@ const Nav = props => {
     } = props;
 
     return (
+        <RecoilRoot>
         <nav
             role="navigation"
             className="navbar"
@@ -37,6 +39,7 @@ const Nav = props => {
                 })}
             </ul>
         </nav>
+        </RecoilRoot>
     )
 };
 

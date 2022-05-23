@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import Input from '../input/input';
 import './form.scss';
+import { useRecoilState, RecoilRoot } from 'recoil';
 
 const Form = props => {
     const {
@@ -37,6 +38,7 @@ const Form = props => {
     };
 
     return (
+        <RecoilRoot>
         <form
             onSubmit={onFormSubmit}
             className=""
@@ -52,6 +54,7 @@ const Form = props => {
                 disabled={disabled}
             />
         </form>
+        </RecoilRoot>
     )
 };
 

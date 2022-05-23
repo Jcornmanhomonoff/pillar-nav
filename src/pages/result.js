@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import Layout from '../components/layout/layout';
+import Layout from '../templates/layout';
+import { useRecoilState, RecoilRoot } from 'recoil';
 
 const ResultPage = () => {
     return (
