@@ -16,10 +16,14 @@ label {
     &--name {
         flex-basis: 70px;
         font-weight: bold;
+
+        &-select {
+            flex-basis: 210px;
+        }
     }
 }
 
-input {
+input, select {
     border: 1px solid $borderGray;
     border-radius: 5px;
     display: block;
@@ -27,7 +31,13 @@ input {
     line-height: 2.8125rem;
     margin-top: 5px;
     padding: 0 10px;
+    transition: border 0.1s ease;
     width: 100%;
+
+    &:focus, &:active {
+        outline: none;
+        border: 1px solid $buttonBlue;
+    }
 
     @include media-min-width($tab) {
         margin-top: 0;

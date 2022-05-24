@@ -2,12 +2,17 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { toUpperCase } from '../../assets/scripts/helpers';
 import './nav.scss';
-import { useRecoilState, RecoilRoot } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import {
+    selectedOptionState
+} from '../../state/state';
 
 const Nav = props => {
     const {
         pages
     } = props;
+
+    const selectedOption = useRecoilValue(selectedOptionState);
 
     return (
         <nav
@@ -29,7 +34,7 @@ const Nav = props => {
                         <li key={i}>
                             <Link
                                 to={page === "home" ? "/" : `/${page}`}
-                                className={window.location.pathname.substring(1) === page ? "active" : (window.location.pathname === "/" && page === "home") ? "active" : null}
+                                className={`${selectedOption === '' && (page === "analysis" || page === "result") ? 'disabled ' : ''}${window.location.pathname.substring(1) === page ? "active" : (window.location.pathname === "/" && page === "home") ? "active" : ''}`}
                             >
                                 {toUpperCase(page)}
                             </Link>

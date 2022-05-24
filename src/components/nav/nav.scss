@@ -35,5 +35,10 @@ nav {
         &:hover, &:focus, &.active {
             color: $navHoverBlue;
         }
+
+        &.disabled {
+            pointer-events: none;
+            color: $disabledGray;
+        }
     }
 }
