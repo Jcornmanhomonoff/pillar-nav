@@ -5,12 +5,12 @@ export const dataObjState = atom({
     default: ''
 });
 
-export const selectedOptionState = atom({
-    key: 'selectedOptionState',
+export const pipelineVersionState = atom({
+    key: 'pipelineVersionState',
     default: ''
 });
 
-export const pipelineState = atom({
-    key: 'pipelineState',
+export const formDataState = atom({
+    key: 'formDataState',
     default: ''
 });

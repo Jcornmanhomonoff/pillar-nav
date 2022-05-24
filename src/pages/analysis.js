@@ -1,12 +1,17 @@
 import * as React from 'react';
 import Layout from '../templates/layout';
 import Form from '../components/form/form';
-import { useRecoilState, RecoilRoot } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import {
+    pipelineVersionState
+} from '../state/state';
 
 const AnalysisPage = () => {
+    const pipelineVersion = useRecoilValue(pipelineVersionState);
+
     return (
         <Layout pageTitle="Analysis">
-            <Form title="Create analysis"/>
+            {pipelineVersion ? <Form title="Create analysis"/> : <p>Please select a pipeline version</p>}
         </Layout>
     )
 };

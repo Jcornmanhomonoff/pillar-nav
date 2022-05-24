@@ -4,7 +4,7 @@ import { toUpperCase } from '../../assets/scripts/helpers';
 import './nav.scss';
 import { useRecoilValue } from 'recoil';
 import {
-    selectedOptionState
+    pipelineVersionState
 } from '../../state/state';
 
 const Nav = props => {
@@ -12,7 +12,7 @@ const Nav = props => {
         pages
     } = props;
 
-    const selectedOption = useRecoilValue(selectedOptionState);
+    const pipelineVersion = useRecoilValue(pipelineVersionState);
 
     return (
         <nav
@@ -34,7 +34,7 @@ const Nav = props => {
                         <li key={i}>
                             <Link
                                 to={page === "home" ? "/" : `/${page}`}
-                                className={`${selectedOption === '' && (page === "analysis" || page === "result") ? 'disabled ' : ''}${window.location.pathname.substring(1) === page ? "active" : (window.location.pathname === "/" && page === "home") ? "active" : ''}`}
+                                className={`${pipelineVersion === '' && (page === "analysis" || page === "result") ? 'disabled ' : ''}${window.location.pathname.substring(1) === page ? "active" : (window.location.pathname === "/" && page === "home") ? "active" : ''}`}
                             >
                                 {toUpperCase(page)}
                             </Link>

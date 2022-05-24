@@ -4,8 +4,7 @@ import Layout from '../templates/layout';
 import '../assets/styles/pages/index.scss';
 import {
     dataObjState,
-    selectedOptionState,
-    pipelineState
+    pipelineVersionState
 } from '../state/state';
 
 let data = {
@@ -16,8 +15,7 @@ let data = {
 
 const IndexPage = () => {
     const [dataObj, setDataObj] = useRecoilState(dataObjState),
-        [selectedOption, setSelectedOption] = useRecoilState(selectedOptionState),
-        [pipeline, setPipeline] = useRecoilState(pipelineState);
+        [pipelineVersion, setPipelineVersion] = useRecoilState(pipelineVersionState);
 
     useEffect(() => {
         // fetch('https://jessicapillar.free.beeceptor.com')
@@ -40,14 +38,6 @@ const IndexPage = () => {
         })
     };
 
-    const setContent = select => {
-        if (select !== '') {
-            // find matching key based off of selected option/value
-            setPipeline(Object.keys(dataObj).find(key => dataObj[key] === select));
-            // setDisabledElements(false);
-        }
-    }
-
     return (
         <Layout pageTitle="Home">
             <h2>Select Analysis Pipeline Version</h2>
@@ -57,10 +47,9 @@ const IndexPage = () => {
                     name="analysis-dropdown"
                     onChange={e => {
                         let value = e.target.value
-                        setSelectedOption(value);
-                        setContent(value)
+                        setPipelineVersion(value);
                     }}
-                    value={selectedOption}
+                    value={pipelineVersion}
                 >
                     <option
                         disabled
@@ -71,25 +60,21 @@ const IndexPage = () => {
                     {dataObj && renderOptions(dataObj)}
                 </select>
             </label>
-            {selectedOption && (
+            {pipelineVersion && (
                 <div className="information">
                     <div className="information--piece">
-                        <h4>PiVAT {selectedOption.slice(3)} User Manual</h4>
+                        <h4>PiVAT {pipelineVersion.slice(3)} User Manual</h4>
                         <a
-                            target="_blank"
-                            rel="noopener"
-                            href={`/${selectedOption}`}
+                            href={`/${pipelineVersion}`}
                             className="download"
                         >
                             Download
                         </a>
                     </div>
                     <div className="information--piece">
-                        <h4>PiVAT {selectedOption.slice(3)} Release Notes</h4>
+                        <h4>PiVAT {pipelineVersion.slice(3)} Release Notes</h4>
                         <a
-                            target="_blank"
-                            rel="noopener"
-                            href={`/${selectedOption}`}
+                            href={`/${pipelineVersion}`}
                             className="download"
                         >
                             Download
