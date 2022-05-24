@@ -7,22 +7,9 @@ form {
     max-width: 400px;
 
     input[type=submit] {
-        background: $buttonBlue;
-        border: none;
-        color: $white;
-        max-width: 140px;
-        transition: background 0.3s ease;
-
+        @include button-treatment;
         @include media-min-width($tab) {
             margin-left: 65px;
-        }
-
-        &:hover, &:focus, &.active {
-            background: darken($buttonBlue, 10%);
-        }
-
-        &.disabled {
-            background: black;
         }
     }
 }

@@ -1,0 +1,31 @@
+@import '../color_variables';
+@import '../mixins';
+
+h2 {
+    margin-bottom: 10px;
+}
+
+h4 {
+    margin: 40px 0 20px;
+}
+
+.information {
+    display: flex;
+
+    &--piece {
+        flex-basis: 50%;
+        text-align: center;
+    }
+
+    .download {
+        @include button-treatment;
+        align-items: center;
+        border-radius: 5px;
+        display: flex;
+        height: 47px;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0 10px;
+        text-decoration: none;
+    }
+}

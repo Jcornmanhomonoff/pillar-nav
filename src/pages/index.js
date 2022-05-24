@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, RecoilRoot } from 'recoil';
 import Layout from '../templates/layout';
+import '../assets/styles/pages/index.scss';
 import {
     dataObjState,
-    selectedOptionState
+    selectedOptionState,
+    pipelineState
 } from '../state/state';
 
 let data = {
@@ -14,7 +16,8 @@ let data = {
 
 const IndexPage = () => {
     const [dataObj, setDataObj] = useRecoilState(dataObjState),
-        [selectedOption, setSelectedOption] = useRecoilState(selectedOptionState);
+        [selectedOption, setSelectedOption] = useRecoilState(selectedOptionState),
+        [pipeline, setPipeline] = useRecoilState(pipelineState);
 
     useEffect(() => {
         // fetch('https://jessicapillar.free.beeceptor.com')
@@ -27,6 +30,7 @@ const IndexPage = () => {
     }, []);
 
     const renderOptions = obj => {
+        //grab all values from data & populate select with options
         let values = Object.values(obj);
 
         return values.map((value, i) => {
@@ -37,9 +41,9 @@ const IndexPage = () => {
     };
 
     const setContent = select => {
-        console.log(select)
         if (select !== '') {
-            
+            // find matching key based off of selected option/value
+            setPipeline(Object.keys(dataObj).find(key => dataObj[key] === select));
             // setDisabledElements(false);
         }
     }
@@ -67,6 +71,32 @@ const IndexPage = () => {
                     {dataObj && renderOptions(dataObj)}
                 </select>
             </label>
+            {selectedOption && (
+                <div className="information">
+                    <div className="information--piece">
+                        <h4>PiVAT {selectedOption.slice(3)} User Manual</h4>
+                        <a
+                            target="_blank"
+                            rel="noopener"
+                            href={`/${selectedOption}`}
+                            className="download"
+                        >
+                            Download
+                        </a>
+                    </div>
+                    <div className="information--piece">
+                        <h4>PiVAT {selectedOption.slice(3)} Release Notes</h4>
+                        <a
+                            target="_blank"
+                            rel="noopener"
+                            href={`/${selectedOption}`}
+                            className="download"
+                        >
+                            Download
+                        </a>
+                    </div>
+                </div>
+            )}
         </Layout>
     )
 };

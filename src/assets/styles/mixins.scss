@@ -3,3 +3,19 @@
         @content;
     }
 }
+
+@mixin button-treatment {
+    background: $buttonBlue;
+    border: none;
+    color: $white;
+    max-width: 140px;
+    transition: background 0.3s ease;
+
+    &:hover, &:focus, &.active {
+        background: darken($buttonBlue, 10%);
+    }
+
+    &.disabled {
+        background: black;
+    }
+}
