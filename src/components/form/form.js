@@ -38,7 +38,6 @@ const Form = props => {
     };
 
     return (
-        <RecoilRoot>
         <form
             onSubmit={onFormSubmit}
             className=""
@@ -54,7 +53,6 @@ const Form = props => {
                 disabled={disabled}
             />
         </form>
-        </RecoilRoot>
     )
 };
 

@@ -11,7 +11,6 @@ const Input = props => {
     [ inputValue, setInputValue ] = useState('');
 
     return (
-        <RecoilRoot>
         <div className="field">
             <label htmlFor={name}>
                 <span className="field--name">{toUpperCase(name)}</span>
@@ -23,8 +22,6 @@ const Input = props => {
                 />
             </label>
         </div>
-        </RecoilRoot>
-
     )
 };
 

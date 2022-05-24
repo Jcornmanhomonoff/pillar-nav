@@ -5,37 +5,47 @@ import {
     dataObjState
 } from '../state/state';
 
+let data = {
+  "pipeline1": "AP 2011.2",
+  "pipeline2": "AP 2021.1",
+  "pipeline3": "AP 2022.1"
+}
+
 const IndexPage = () => {
   // const [dataState, setDataState] = useState('');
 
     const [ dataState, setDataState ] = useRecoilState(dataObjState);
 
     useEffect(() => {
-        fetch('https://jessicapillar.free.beeceptor.com')
-          .then(response => response.json())
-          .then(data => {
-              console.log(data)
-              setDataState(data);
-              console.log(dataState)
-          });
-
+        // fetch('https://jessicapillar.free.beeceptor.com')
+        //   .then(response => response.json())
+        //   .then(data => {
+        //       console.log(data)
+        //       setDataState(data);
+        //   });
+              setDataState(data); // if met rate limiter
     }, []);
 
-    // const createOptions = () => {
-    //     for (const [key, value] of Object.entries(object1)) {
-    //       console.log(`${key}: ${value}`);
-    //     }
-    // };
+    const renderOptions = (obj) => {
+        let values = Object.values(obj);
+
+        return values.map((value, i) => {
+            return (
+                <option value={value} key={i}>{value}</option>
+            )
+        })
+    };
 
     return (
-            <Layout pageTitle="Home">
-                <h2>Select Analysis Pipeline Version</h2>
-                <label htmlFor="analysis-dropdown">
-                    Analysis Pipeline:</label>
+        <Layout pageTitle="Home">
+            <h2>Select Analysis Pipeline Version</h2>
+            <label htmlFor="analysis-dropdown">
+                Analysis Pipeline:
                 <select name="analysis-dropdown">
-
+                    {dataState && renderOptions(dataState)}
                 </select>
-            </Layout>
+            </label>
+        </Layout>
     )
 };
 

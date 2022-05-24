@@ -10,7 +10,6 @@ const Nav = props => {
     } = props;
 
     return (
-        <RecoilRoot>
         <nav
             role="navigation"
             className="navbar"
@@ -39,7 +38,6 @@ const Nav = props => {
                 })}
             </ul>
         </nav>
-        </RecoilRoot>
     )
 };
 
