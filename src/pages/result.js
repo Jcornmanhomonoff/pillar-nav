@@ -10,9 +10,9 @@ const ResultPage = () => {
     const formData = useRecoilValue(formDataState);
 
     const printRows = () => {
-        return Array.from(formData.entries()).map((entry, index) => {
+        return Array.from(formData.entries()).map((entry, i) => {
             return (
-                <div className="results--row">
+                <div key={i} className="results--row">
                     <div className="results--row--key">
                         {entry[0]}
                     </div>
@@ -22,14 +22,14 @@ const ResultPage = () => {
                 </div>
             )
         })
-    }
+    },
 
-    const renderFormContent = () => {
+    renderFormContent = () => {
         return (
             <React.Fragment>
                 <h1>Results</h1>
                 <div className="results">
-                    {formData && printRows()}
+                    {printRows()}
                 </div>
             </React.Fragment>
         )
