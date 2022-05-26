@@ -12,4 +12,23 @@ form {
             margin-left: 65px;
         }
     }
+
+    .message {
+        color: $buttonBlue;
+        margin-left: 65px;
+        max-height: 0;
+        overflow: hidden;
+        padding-bottom: 0;
+        transition: max-height 0.2s $in-out-quad,
+                    padding-bottom 0.2s $in-out-quad;
+
+        &--visible {
+            max-height: 1000px;
+            padding-bottom: 20px;
+        }
+
+        &--error {
+            color: $errorRed;
+        }
+    }
 }

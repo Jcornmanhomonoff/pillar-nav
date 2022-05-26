@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
-import './input.scss';
 import { toUpperCase } from '../../assets/scripts/helpers';
+import './input.scss';
 
 const Input = props => {
     const {
@@ -18,6 +17,7 @@ const Input = props => {
                     name={name}
                     onChange={e => setInputValue(e.target.value)}
                     value={inputValue}
+                    className={`${inputValue.length === 0 ? 'field--invalid' : ''}`}
                 />
             </label>
         </div>

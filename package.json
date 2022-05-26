@@ -11,10 +11,12 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "preload-fonts": "gatsby-preload-fonts"
   },
   "dependencies": {
     "gatsby": "^4.14.1",
+    "gatsby-plugin-preload-fonts": "^3.15.0",
     "gatsby-plugin-sass": "^5.14.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

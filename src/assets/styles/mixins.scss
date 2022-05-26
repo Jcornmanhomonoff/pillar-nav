@@ -11,11 +11,9 @@
     max-width: 140px;
     transition: background 0.3s ease;
 
-    &:hover, &:focus, &.active {
+    &:hover, &:focus {
         background: darken($buttonBlue, 10%);
     }
-
-    &.disabled {
-        background: black;
-    }
 }
+
+$in-out-quad:  cubic-bezier(0.455, 0.030, 0.515, 0.955);

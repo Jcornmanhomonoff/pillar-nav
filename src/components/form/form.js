@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'gatsby';
+import React, { useRef, useState } from 'react';
 import Input from '../input/input';
 import './form.scss';
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
     pipelineVersionState,
     formDataState
@@ -13,23 +12,35 @@ const Form = props => {
         title
     } = props,
     formRef = useRef(null),
-    [ disabled, setDisabled ] = useState(false),
+    [ message, setMessage ] = useState(''),
+    [ error, setError ] = useState(false),
     pipelineVersion = useRecoilValue(pipelineVersionState),
-    [formData, setFormData] = useRecoilState(formDataState);
+    setFormData = useSetRecoilState(formDataState);
 
     let inputNames = ['path', 'name'];
 
-    // const checkForValues = () => {
-    //     const fields = formRef.current.querySelectorAll('form input');
-    //
-    //     console.log(fields)
-    //     const hasValue = field => {
-    //         return field.value.length !== ''
-    //     };
-    //
-    //     console.log(fields.every(hasValue))
-    //     // fields.every(hasValue) === '' ? setDisabled(false) : setDisabled(true)
-    // }
+    const checkForValues = data => {
+        const fields = formRef.current.querySelectorAll('form input[type="text"]');
+        let counter = 0;
+
+        fields.forEach(field => {
+            field.value = field.value.trim(); //kill any whitespace around the input values
+
+            if (field.value === '') {
+                counter++
+            }
+        });
+
+        if (counter > 0) {
+            setMessage('Please fill in all fields');
+            setError(true);
+            setFormData('');
+        } else {
+            setMessage('Proceed to results page for more info.');
+            setError(false);
+            setFormData(data);
+        }
+    }
 
     const onFormSubmit = e => {
         e.preventDefault();
@@ -38,23 +49,24 @@ const Form = props => {
 
         data.append('pipeline-version', pipelineVersion);
 
-        setFormData(data);
+        checkForValues(data);
     };
 
     return (
         <form
-            onSubmit={onFormSubmit}
-            className=""
             ref={formRef}
+            onSubmit={onFormSubmit}
         >
             <h1>{title}</h1>
             {inputNames.map((name, i) => {
                 return <Input key={i} name={name} />
             })}
+            <div className={`message${message !== '' ? ' message--visible' : ''}${error ? ' message--error' : ''}`}>
+                {message && message}
+            </div>
             <input
                 type="submit"
                 value="Submit"
-                disabled={disabled}
             />
         </form>
     )

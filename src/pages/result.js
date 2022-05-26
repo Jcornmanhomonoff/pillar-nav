@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
 import Layout from '../templates/layout';
+import '../assets/styles/pages/result.scss';
 import { useRecoilValue } from 'recoil';
 import {
     formDataState
 } from '../state/state';
+import { toUpperCase } from '../assets/scripts/helpers';
 
 const ResultPage = () => {
     const formData = useRecoilValue(formDataState);
@@ -13,10 +14,10 @@ const ResultPage = () => {
         return Array.from(formData.entries()).map((entry, i) => {
             return (
                 <div key={i} className="results--row">
-                    <div className="results--row--key">
-                        {entry[0]}
+                    <div className="results--row__col">
+                        {entry[0] === 'pipeline-version' ? toUpperCase(entry[0].replace('-', ' ')) : toUpperCase(entry[0])}
                     </div>
-                    <div className="results--row--key">
+                    <div className="results--row__col">
                         {entry[1]}
                     </div>
                 </div>
