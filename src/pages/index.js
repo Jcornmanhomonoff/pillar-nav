@@ -16,6 +16,8 @@ const IndexPage = () => {
         //   .then(response => response.json())
         //   .then(data => {
         //       setDataObj(data);
+        //   }).catch((err) => {
+        //       console.error(err)
         //   });
         let data = {
           "pipeline1": "AP 2011.2",

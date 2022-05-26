@@ -15,12 +15,15 @@ form {
 
     .message {
         color: $buttonBlue;
-        margin-left: 65px;
         max-height: 0;
         overflow: hidden;
         padding-bottom: 0;
         transition: max-height 0.2s $in-out-quad,
                     padding-bottom 0.2s $in-out-quad;
+
+        @include media-min-width($tab) {
+            margin-left: 65px;
+        }
 
         &--visible {
             max-height: 1000px;

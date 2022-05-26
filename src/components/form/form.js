@@ -36,7 +36,7 @@ const Form = props => {
             setError(true);
             setFormData('');
         } else {
-            setMessage('Proceed to results page for more info.');
+            setMessage(`Proceed to results page for more info.`);
             setError(false);
             setFormData(data);
         }
